@@ -14,7 +14,16 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-@interface KISSMetricsAPI : NSObject
+@interface KISSMetricsAPI : NSObject {
+    @private
+    NSMutableArray *sendQueue;
+    NSTimer *timer;
+    NSURLConnection *existingConnection;
+    NSString *key;
+    NSString *lastIdentity;
+    NSDictionary *propsToSend;
+    NSInteger failureStatus;
+}
 
 
 /**

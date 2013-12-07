@@ -741,7 +741,7 @@ static KISSMetricsAPI *sharedAPI = nil;
     err =Gestalt(gestaltSystemVersionBugFix, &bugfix);
     if (err != noErr) return nil;
     
-    return [NSString stringWithFormat:@"%d.%d.%d", major, minor, bugfix];
+    return [NSString stringWithFormat:@"%d.%d.%d", (int)major, (int)minor, (int)bugfix];
 }
 #endif
 
