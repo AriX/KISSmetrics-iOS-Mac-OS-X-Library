@@ -126,6 +126,15 @@
 
 
 /**
+ * identity
+ *
+ * Discussion:
+ * Returns the latest identity set through identify:
+ */
+- (NSString *)identity;
+
+
+/**
  * clearIdentity:
  *
  * Clears the last set identity.

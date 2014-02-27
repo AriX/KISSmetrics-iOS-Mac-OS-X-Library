@@ -656,7 +656,10 @@ static KISSMetricsAPI *sharedAPI = nil;
         InfoLog(@"KISSMetricsAPI: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
     }
-    
+  
+    if ([lastIdentity isEqualToString:identity])
+      return;
+  
     
     NSString *escapedOldIdentity = [self urlEncode:self.lastIdentity];
     NSString *escapedNewIdentity = [self urlEncode:identity];
@@ -682,11 +685,15 @@ static KISSMetricsAPI *sharedAPI = nil;
         //Persist the new queue
         [self archiveData];
     }
-    //Push it out right not if possible.
+    
+    //Push it out right now if possible.
     [self send];
-    
-    
+}
 
+
+- (NSString *)identity
+{
+    return self.lastIdentity;
 }
 
 
